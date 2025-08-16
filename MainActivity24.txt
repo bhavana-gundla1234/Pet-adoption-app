@@ -1,0 +1,49 @@
+package com.example.myapplication;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+public class MainActivity24 extends AppCompatActivity {
+
+    private EditText editTextUsername;
+    private EditText editTextEmail;
+    private EditText editTextPassword;
+    private Button buttonRegister;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main24);
+
+        editTextUsername = findViewById(R.id.editTextUsername);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        buttonRegister = findViewById(R.id.buttonRegister);
+
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerAccount();
+            }
+        });
+    }
+
+    private void registerAccount() {
+        String username = editTextUsername.getText().toString();
+        String email = editTextEmail.getText().toString();
+        String password = editTextPassword.getText().toString();
+
+        // Perform input validation
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Here, you can add code to send the registration data to your server for storage
+        // For demonstration purposes, just show a Toast message
+        String message = "Registration successful\nUsername: " + username + "\nEmail: " + email;
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+}
